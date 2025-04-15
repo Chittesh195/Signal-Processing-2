@@ -1,52 +1,61 @@
-# 🚗 Drowsiness Detection System: A Digital Signal Processing Approach
-
-A real-time, non-intrusive drowsiness detection system leveraging **Eye Aspect Ratio (EAR)** and **Fast Fourier Transform (FFT)** analysis to enhance driver safety through timely fatigue alerts.
-
----
-
-## 🧠 Overview
-
-This project monitors driver alertness using computer vision and signal processing. It continuously analyzes eye openness to detect signs of fatigue, issuing an **audio-visual alert** when drowsiness is detected.
-
-Developed using Python libraries like `OpenCV`, `dlib`, `numpy`, and `scipy`, the system processes live video to extract facial landmarks, compute EAR, and perform FFT analysis for signal-based insight.
+# Drowsiness Detection System  
+*A Digital Signal Processing Approach for Driver Safety*
 
 ---
 
-## ⚙️ How It Works
+## 📝 Abstract
 
-1. **Video Capture**: Uses webcam feed for real-time monitoring.
-2. **Face and Eye Detection**: `dlib` detects 68 facial landmarks.
-3. **EAR Calculation**: Measures eye openness using six key points around each eye.
-4. **Drowsiness Detection**:
-   - EAR is sampled every 10th frame.
-   - A buffer stores the latest 120 EAR values.
-   - FFT detects low-frequency patterns signaling fatigue.
-5. **Alert System**: Triggers a visual warning and customizable beep sound when drowsiness is detected.
-6. **Real-Time Visualization**:
-   - Live EAR plot
-   - FFT magnitude spectrum
+This project presents a real-time drowsiness detection system based on **Eye Aspect Ratio (EAR)** analysis and **Fast Fourier Transform (FFT)** techniques. Designed to monitor driver alertness, the system utilizes computer vision to track eye movements, analyze EAR patterns, and issue alerts upon detecting signs of fatigue. By integrating signal processing methods, this solution offers a reliable and non-intrusive approach to enhancing road safety.
+
+---
+
+## 📌 Project Objectives
+
+- Monitor driver drowsiness through eye movement analysis.
+- Utilize EAR to detect prolonged eye closure and blinking behavior.
+- Apply FFT on EAR data to identify low-frequency fatigue patterns.
+- Alert the driver through visual and audio cues when drowsiness is detected.
+
+---
+
+## ⚙️ System Workflow
+
+1. **Video Acquisition**  
+   - Captures live video from the computer's webcam using OpenCV.
+
+2. **Facial Landmark Detection**  
+   - Utilizes the `dlib` library to detect facial features, particularly eye landmarks.
+
+3. **EAR Calculation**  
+   - Computes Eye Aspect Ratio using six landmark points around each eye to quantify eye openness.
+
+4. **Data Sampling and Windowing**  
+   - EAR values are sampled every 10th frame.
+   - Maintains a sliding window of 120 samples for real-time analysis.
+
+5. **FFT-Based Drowsiness Detection**  
+   - Performs frequency domain analysis on the EAR data.
+   - Focuses on low-frequency components to detect slow blinks or prolonged closure.
+
+6. **Alert Mechanism**  
+   - Displays an on-screen warning and plays an audio alert (via `winsound`) when drowsiness is detected.
+
+7. **Visualization**  
+   - Real-time plotting of EAR values and their FFT spectrum to aid understanding and debugging.
 
 ---
 
 ## 📊 Digital Signal Processing Concepts
 
-- **Sampling**: Downsamples video frames for efficient processing.
-- **Windowing**: Maintains a sliding window of recent EAR values.
-- **FFT Analysis**: Converts time-domain EAR data into frequency domain to identify slow eye blinks and closures.
+- **Sampling**: Reduces data load by analyzing every 10th video frame.
+- **Windowing**: Ensures analysis is always based on the most recent 120 samples.
+- **FFT (Fast Fourier Transform)**: Detects frequency patterns that suggest drowsiness (e.g., slow blinking).
 
 ---
 
-## 🖥️ Output
+## 🔧 Requirements
 
-- ✅ EAR and FFT plots in real-time
-- ⚠️ Visual warning overlay
-- 🔊 Audio alert to wake the driver
-
----
-
-## 📦 Dependencies
-
-Make sure to install the following Python libraries:
+Ensure the following Python libraries are installed:
 
 ```bash
 pip install opencv-python dlib scipy numpy matplotlib
@@ -54,15 +63,14 @@ pip install opencv-python dlib scipy numpy matplotlib
 
 ---
 
-## 🧪 Recommendations for Future Work
+## 💡 Recommendations for Future Enhancements
 
-- Enhance accuracy using advanced facial landmark models.
-- Integrate other physiological signals (e.g., heart rate).
-- Optimize system for low-light or nighttime driving environments.
+- Integrate more advanced facial detection models for increased robustness.
+- Incorporate additional physiological signals (e.g., heart rate) for multimodal analysis.
+- Improve performance in low-light environments for nighttime usability.
 
 ---
 
+## 📄 License
 
-## 📜 License
-
-Feel free to use or adapt this project for educational and research purposes.
+This project is intended for educational and research use only. Feel free to modify or extend it with proper attribution.
